@@ -1,0 +1,492 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7BE2530A1804CEC700F8009D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE253091804CEC700F8009D /* Foundation.framework */; };
+		7BE2530C1804CEC700F8009D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE2530B1804CEC700F8009D /* CoreGraphics.framework */; };
+		7BE2530E1804CEC700F8009D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE2530D1804CEC700F8009D /* UIKit.framework */; };
+		7BE253101804CEC700F8009D /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE2530F1804CEC700F8009D /* SpriteKit.framework */; };
+		7BE253161804CEC700F8009D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7BE253141804CEC700F8009D /* InfoPlist.strings */; };
+		7BE253181804CEC700F8009D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE253171804CEC700F8009D /* main.m */; };
+		7BE2531C1804CEC700F8009D /* LIYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2531B1804CEC700F8009D /* LIYAppDelegate.m */; };
+		7BE2531F1804CEC700F8009D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE2531D1804CEC700F8009D /* Main.storyboard */; };
+		7BE253221804CEC700F8009D /* LIYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE253211804CEC700F8009D /* LIYViewController.m */; };
+		7BE253251804CEC700F8009D /* LIYMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE253241804CEC700F8009D /* LIYMyScene.m */; };
+		7BE253271804CEC700F8009D /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BE253261804CEC700F8009D /* Spaceship.png */; };
+		7BE253291804CEC700F8009D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE253281804CEC700F8009D /* Images.xcassets */; };
+		7BE253301804CEC700F8009D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE2532F1804CEC700F8009D /* XCTest.framework */; };
+		7BE253311804CEC700F8009D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE253091804CEC700F8009D /* Foundation.framework */; };
+		7BE253321804CEC700F8009D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE2530D1804CEC700F8009D /* UIKit.framework */; };
+		7BE2533A1804CEC700F8009D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7BE253381804CEC700F8009D /* InfoPlist.strings */; };
+		7BE2533C1804CEC700F8009D /* ZombieCongaRWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2533B1804CEC700F8009D /* ZombieCongaRWTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7BE253331804CEC700F8009D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BE252FE1804CEC700F8009D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BE253051804CEC700F8009D;
+			remoteInfo = ZombieCongaRW;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7BE253061804CEC700F8009D /* ZombieCongaRW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZombieCongaRW.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BE253091804CEC700F8009D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7BE2530B1804CEC700F8009D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7BE2530D1804CEC700F8009D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7BE2530F1804CEC700F8009D /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		7BE253131804CEC700F8009D /* ZombieCongaRW-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZombieCongaRW-Info.plist"; sourceTree = "<group>"; };
+		7BE253151804CEC700F8009D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7BE253171804CEC700F8009D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7BE253191804CEC700F8009D /* ZombieCongaRW-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZombieCongaRW-Prefix.pch"; sourceTree = "<group>"; };
+		7BE2531A1804CEC700F8009D /* LIYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LIYAppDelegate.h; sourceTree = "<group>"; };
+		7BE2531B1804CEC700F8009D /* LIYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LIYAppDelegate.m; sourceTree = "<group>"; };
+		7BE2531E1804CEC700F8009D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7BE253201804CEC700F8009D /* LIYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LIYViewController.h; sourceTree = "<group>"; };
+		7BE253211804CEC700F8009D /* LIYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LIYViewController.m; sourceTree = "<group>"; };
+		7BE253231804CEC700F8009D /* LIYMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LIYMyScene.h; sourceTree = "<group>"; };
+		7BE253241804CEC700F8009D /* LIYMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LIYMyScene.m; sourceTree = "<group>"; };
+		7BE253261804CEC700F8009D /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		7BE253281804CEC700F8009D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7BE2532E1804CEC700F8009D /* ZombieCongaRWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZombieCongaRWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BE2532F1804CEC700F8009D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7BE253371804CEC700F8009D /* ZombieCongaRWTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZombieCongaRWTests-Info.plist"; sourceTree = "<group>"; };
+		7BE253391804CEC700F8009D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7BE2533B1804CEC700F8009D /* ZombieCongaRWTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZombieCongaRWTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7BE253031804CEC700F8009D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BE2530C1804CEC700F8009D /* CoreGraphics.framework in Frameworks */,
+				7BE2530E1804CEC700F8009D /* UIKit.framework in Frameworks */,
+				7BE253101804CEC700F8009D /* SpriteKit.framework in Frameworks */,
+				7BE2530A1804CEC700F8009D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BE2532B1804CEC700F8009D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BE253301804CEC700F8009D /* XCTest.framework in Frameworks */,
+				7BE253321804CEC700F8009D /* UIKit.framework in Frameworks */,
+				7BE253311804CEC700F8009D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7BE252FD1804CEC700F8009D = {
+			isa = PBXGroup;
+			children = (
+				7BE253111804CEC700F8009D /* ZombieCongaRW */,
+				7BE253351804CEC700F8009D /* ZombieCongaRWTests */,
+				7BE253081804CEC700F8009D /* Frameworks */,
+				7BE253071804CEC700F8009D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7BE253071804CEC700F8009D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7BE253061804CEC700F8009D /* ZombieCongaRW.app */,
+				7BE2532E1804CEC700F8009D /* ZombieCongaRWTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7BE253081804CEC700F8009D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BE253091804CEC700F8009D /* Foundation.framework */,
+				7BE2530B1804CEC700F8009D /* CoreGraphics.framework */,
+				7BE2530D1804CEC700F8009D /* UIKit.framework */,
+				7BE2530F1804CEC700F8009D /* SpriteKit.framework */,
+				7BE2532F1804CEC700F8009D /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7BE253111804CEC700F8009D /* ZombieCongaRW */ = {
+			isa = PBXGroup;
+			children = (
+				7BE2531A1804CEC700F8009D /* LIYAppDelegate.h */,
+				7BE2531B1804CEC700F8009D /* LIYAppDelegate.m */,
+				7BE2531D1804CEC700F8009D /* Main.storyboard */,
+				7BE253201804CEC700F8009D /* LIYViewController.h */,
+				7BE253211804CEC700F8009D /* LIYViewController.m */,
+				7BE253231804CEC700F8009D /* LIYMyScene.h */,
+				7BE253241804CEC700F8009D /* LIYMyScene.m */,
+				7BE253261804CEC700F8009D /* Spaceship.png */,
+				7BE253281804CEC700F8009D /* Images.xcassets */,
+				7BE253121804CEC700F8009D /* Supporting Files */,
+			);
+			path = ZombieCongaRW;
+			sourceTree = "<group>";
+		};
+		7BE253121804CEC700F8009D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7BE253131804CEC700F8009D /* ZombieCongaRW-Info.plist */,
+				7BE253141804CEC700F8009D /* InfoPlist.strings */,
+				7BE253171804CEC700F8009D /* main.m */,
+				7BE253191804CEC700F8009D /* ZombieCongaRW-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7BE253351804CEC700F8009D /* ZombieCongaRWTests */ = {
+			isa = PBXGroup;
+			children = (
+				7BE2533B1804CEC700F8009D /* ZombieCongaRWTests.m */,
+				7BE253361804CEC700F8009D /* Supporting Files */,
+			);
+			path = ZombieCongaRWTests;
+			sourceTree = "<group>";
+		};
+		7BE253361804CEC700F8009D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7BE253371804CEC700F8009D /* ZombieCongaRWTests-Info.plist */,
+				7BE253381804CEC700F8009D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7BE253051804CEC700F8009D /* ZombieCongaRW */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BE2533F1804CEC800F8009D /* Build configuration list for PBXNativeTarget "ZombieCongaRW" */;
+			buildPhases = (
+				7BE253021804CEC700F8009D /* Sources */,
+				7BE253031804CEC700F8009D /* Frameworks */,
+				7BE253041804CEC700F8009D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZombieCongaRW;
+			productName = ZombieCongaRW;
+			productReference = 7BE253061804CEC700F8009D /* ZombieCongaRW.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7BE2532D1804CEC700F8009D /* ZombieCongaRWTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BE253421804CEC800F8009D /* Build configuration list for PBXNativeTarget "ZombieCongaRWTests" */;
+			buildPhases = (
+				7BE2532A1804CEC700F8009D /* Sources */,
+				7BE2532B1804CEC700F8009D /* Frameworks */,
+				7BE2532C1804CEC700F8009D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7BE253341804CEC700F8009D /* PBXTargetDependency */,
+			);
+			name = ZombieCongaRWTests;
+			productName = ZombieCongaRWTests;
+			productReference = 7BE2532E1804CEC700F8009D /* ZombieCongaRWTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7BE252FE1804CEC700F8009D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LIY;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Jason Cheladyn";
+				TargetAttributes = {
+					7BE2532D1804CEC700F8009D = {
+						TestTargetID = 7BE253051804CEC700F8009D;
+					};
+				};
+			};
+			buildConfigurationList = 7BE253011804CEC700F8009D /* Build configuration list for PBXProject "ZombieCongaRW" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7BE252FD1804CEC700F8009D;
+			productRefGroup = 7BE253071804CEC700F8009D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7BE253051804CEC700F8009D /* ZombieCongaRW */,
+				7BE2532D1804CEC700F8009D /* ZombieCongaRWTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7BE253041804CEC700F8009D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BE253161804CEC700F8009D /* InfoPlist.strings in Resources */,
+				7BE253291804CEC700F8009D /* Images.xcassets in Resources */,
+				7BE253271804CEC700F8009D /* Spaceship.png in Resources */,
+				7BE2531F1804CEC700F8009D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BE2532C1804CEC700F8009D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BE2533A1804CEC700F8009D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7BE253021804CEC700F8009D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BE253221804CEC700F8009D /* LIYViewController.m in Sources */,
+				7BE253251804CEC700F8009D /* LIYMyScene.m in Sources */,
+				7BE253181804CEC700F8009D /* main.m in Sources */,
+				7BE2531C1804CEC700F8009D /* LIYAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BE2532A1804CEC700F8009D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BE2533C1804CEC700F8009D /* ZombieCongaRWTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7BE253341804CEC700F8009D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7BE253051804CEC700F8009D /* ZombieCongaRW */;
+			targetProxy = 7BE253331804CEC700F8009D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7BE253141804CEC700F8009D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7BE253151804CEC700F8009D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7BE2531D1804CEC700F8009D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7BE2531E1804CEC700F8009D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7BE253381804CEC700F8009D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7BE253391804CEC700F8009D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7BE2533D1804CEC800F8009D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7BE2533E1804CEC800F8009D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7BE253401804CEC800F8009D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZombieCongaRW/ZombieCongaRW-Prefix.pch";
+				INFOPLIST_FILE = "ZombieCongaRW/ZombieCongaRW-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7BE253411804CEC800F8009D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZombieCongaRW/ZombieCongaRW-Prefix.pch";
+				INFOPLIST_FILE = "ZombieCongaRW/ZombieCongaRW-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		7BE253431804CEC800F8009D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ZombieCongaRW.app/ZombieCongaRW";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZombieCongaRW/ZombieCongaRW-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ZombieCongaRWTests/ZombieCongaRWTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		7BE253441804CEC800F8009D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ZombieCongaRW.app/ZombieCongaRW";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZombieCongaRW/ZombieCongaRW-Prefix.pch";
+				INFOPLIST_FILE = "ZombieCongaRWTests/ZombieCongaRWTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7BE253011804CEC700F8009D /* Build configuration list for PBXProject "ZombieCongaRW" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BE2533D1804CEC800F8009D /* Debug */,
+				7BE2533E1804CEC800F8009D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7BE2533F1804CEC800F8009D /* Build configuration list for PBXNativeTarget "ZombieCongaRW" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BE253401804CEC800F8009D /* Debug */,
+				7BE253411804CEC800F8009D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7BE253421804CEC800F8009D /* Build configuration list for PBXNativeTarget "ZombieCongaRWTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BE253431804CEC800F8009D /* Debug */,
+				7BE253441804CEC800F8009D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7BE252FE1804CEC700F8009D /* Project object */;
+}
