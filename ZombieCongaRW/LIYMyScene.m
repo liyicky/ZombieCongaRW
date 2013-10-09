@@ -9,15 +9,34 @@
 #import "LIYMyScene.h"
 
 @implementation LIYMyScene
+{
+    SKSpriteNode *_zombie;
+}
 
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor whiteColor];
+        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+        [self addChild:background];
+        
+        background.anchorPoint = CGPointZero;
+        background.position    = CGPointZero;
+        
+        [self addZombie];
     }
     
     return self;
 }
+
+- (void)addZombie
+{
+    _zombie = [SKSpriteNode spriteNodeWithImageNamed:@"zombie1"];
+    _zombie.position = CGPointMake(100, 100);
+    [self addChild:_zombie];
+}
+
+
 
 
 

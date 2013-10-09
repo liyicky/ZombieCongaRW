@@ -28,6 +28,14 @@
     [super tearDown];
 }
 
+- (void)testAddZombie
+{
+    LIYMyScene *testScene = [[LIYMyScene alloc] init];
+    [testScene addZombie];
+    int testChildrenCount = testScene.children.count;
+    
+    XCTAssertEqual(1, testChildrenCount, @"There should be 1 node");
+}
 
 
 @end
