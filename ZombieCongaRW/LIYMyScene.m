@@ -11,6 +11,8 @@
 @implementation LIYMyScene
 {
     SKSpriteNode *_zombie;
+    NSTimeInterval _lastUpdateTime;
+    NSTimeInterval _dt;
 }
 
 - (id)initWithSize:(CGSize)size
@@ -34,7 +36,14 @@
     _zombie = [SKSpriteNode spriteNodeWithImageNamed:@"zombie1"];
     _zombie.position = CGPointMake(100, 100);
     [self addChild:_zombie];
+
 }
+
+-(void)update:(NSTimeInterval)currentTime
+{
+    _zombie.position = (CGPointMake(_zombie.position.x + 1, _zombie.position.y));
+}
+
 
 
 

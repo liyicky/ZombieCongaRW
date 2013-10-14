@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>12B7A4BD-995C-49F8-A04A-8813BE2A3F39</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ZombieCongaRW</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7C87B9F4-375F-4242-8849-07C8DF77B718</key>
+		<string>https://github.com/liyicky/ZombieCongaRW.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ZombieCongaRW.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7C87B9F4-375F-4242-8849-07C8DF77B718</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/liyicky/ZombieCongaRW.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7C87B9F4-375F-4242-8849-07C8DF77B718</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7C87B9F4-375F-4242-8849-07C8DF77B718</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZombieCongaRW</string>
+		</dict>
+	</array>
+</dict>
+</plist>

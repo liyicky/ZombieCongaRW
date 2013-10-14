@@ -31,11 +31,17 @@
 - (void)testAddZombie
 {
     LIYMyScene *testScene = [[LIYMyScene alloc] init];
-    [testScene addZombie];
-    int testChildrenCount = testScene.children.count;
+    int nodeCountBeforeZombie = testScene.children.count;
     
-    XCTAssertEqual(1, testChildrenCount, @"There should be 1 node");
+    [testScene addZombie];
+    int nodeCountAfterZombie = testScene.children.count;
+    
+    XCTAssertEqual(nodeCountBeforeZombie + 1, nodeCountAfterZombie, @"There should be 1 additional node");
 }
+
+
+
+
 
 
 @end
