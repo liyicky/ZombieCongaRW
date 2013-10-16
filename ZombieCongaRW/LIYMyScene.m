@@ -13,6 +13,8 @@
     SKSpriteNode *_zombie;
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
+    
+    CGPoint _velocity;
 }
 
 - (id)initWithSize:(CGSize)size
@@ -31,6 +33,20 @@
     return self;
 }
 
+-(void)update:(NSTimeInterval)currentTime
+{
+    [self moveSprite:_zombie velocity:_velocity];
+    
+    if (_lastUpdateTime) {
+        _dt = currentTime - _lastUpdateTime;
+    } else {
+        _dt = 0;
+    }
+    
+    _lastUpdateTime = currentTime;
+    
+}
+
 - (void)addZombie
 {
     _zombie = [SKSpriteNode spriteNodeWithImageNamed:@"zombie1"];
@@ -39,11 +55,27 @@
 
 }
 
--(void)update:(NSTimeInterval)currentTime
+- (void)moveSprite:(SKSpriteNode *)sprite velocity:(CGPoint)veloctiy
 {
-    _zombie.position = (CGPointMake(_zombie.position.x + 1, _zombie.position.y));
+    CGPoint ammountToMove = CGPointMake(veloctiy.x * _dt, veloctiy.y * _dt);
+    NSLog(@"Ammount to move: %@", NSStringFromCGPoint(ammountToMove));
+    sprite.position = CGPointMake(sprite.position.x + ammountToMove.x, sprite.position.y + ammountToMove.y);
 }
 
+- (void)moveZombieTo:(CGPoint)touch
+{
+    CGPoint offset = CGPointMake(touch.x - _zombie.position.x, touch.y - _zombie.position.y);
+    CGFloat length = sqrtf(offset.x * offset.x + offset.y * offset.y);
+    CGPoint direction = CGPointMake(offset.x / length, offset.y / length);
+    _velocity = CGPointMake(direction.x * 120, direction.y * 120);
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self.scene];
+    [self moveZombieTo:location];
+}
 
 
 
