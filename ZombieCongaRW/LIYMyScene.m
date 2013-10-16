@@ -45,6 +45,8 @@
     
     _lastUpdateTime = currentTime;
     
+    [self checkBounds];
+    
 }
 
 - (void)addZombie
@@ -55,9 +57,9 @@
 
 }
 
-- (void)moveSprite:(SKSpriteNode *)sprite velocity:(CGPoint)veloctiy
+- (void)moveSprite:(SKSpriteNode *)sprite velocity:(CGPoint)velocity
 {
-    CGPoint ammountToMove = CGPointMake(veloctiy.x * _dt, veloctiy.y * _dt);
+    CGPoint ammountToMove = CGPointMake(velocity.x * _dt, velocity.y * _dt);
     NSLog(@"Ammount to move: %@", NSStringFromCGPoint(ammountToMove));
     sprite.position = CGPointMake(sprite.position.x + ammountToMove.x, sprite.position.y + ammountToMove.y);
 }
@@ -77,8 +79,36 @@
     [self moveZombieTo:location];
 }
 
-
-
+- (void)checkBounds
+{
+    CGPoint zombiePosition = _zombie.position;
+    CGPoint zombieVelocity = _velocity;
+    CGPoint bottomLeft = CGPointZero;
+    CGPoint topRight = CGPointMake(self.size.width, self.size.height);
+    
+    if (zombiePosition.x <= bottomLeft.x) {
+        zombiePosition.x = bottomLeft.x;
+        zombieVelocity.x = -zombieVelocity.x;
+    }
+    
+    if (zombiePosition.y <= bottomLeft.y) {
+        zombiePosition.y = bottomLeft.y;
+        zombieVelocity.y = -zombieVelocity.y;
+    }
+    
+    if (zombiePosition.x >= topRight.x) {
+        zombiePosition.x = topRight.x;
+        zombieVelocity.x = -zombieVelocity.x;
+    }
+    
+    if (zombiePosition.y >= topRight.y) {
+        zombiePosition.y = topRight.y;
+        zombieVelocity.y = -zombieVelocity.y;
+    }
+    
+    _zombie.position = zombiePosition;
+    _velocity = zombieVelocity;
+}
 
 
 @end

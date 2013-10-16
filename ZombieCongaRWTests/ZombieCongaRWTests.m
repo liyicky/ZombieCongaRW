@@ -15,11 +15,17 @@
 @end
 
 @implementation ZombieCongaRWTests
+{
+    LIYMyScene *_testScene;
+    SKSpriteNode *_zombie;
+}
 
 - (void)setUp
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    _testScene = [[LIYMyScene alloc] init];
+
 }
 
 - (void)tearDown
@@ -30,16 +36,13 @@
 
 - (void)testAddZombie
 {
-    LIYMyScene *testScene = [[LIYMyScene alloc] init];
-    int nodeCountBeforeZombie = testScene.children.count;
+    int nodeCountBeforeZombie = _testScene.children.count;
     
-    [testScene addZombie];
-    int nodeCountAfterZombie = testScene.children.count;
+    [_testScene addZombie];
+    int nodeCountAfterZombie = _testScene.children.count;
     
     XCTAssertEqual(nodeCountBeforeZombie + 1, nodeCountAfterZombie, @"There should be 1 additional node");
 }
-
-
 
 
 
