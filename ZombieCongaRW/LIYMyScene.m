@@ -46,6 +46,7 @@
     _lastUpdateTime = currentTime;
     
     [self checkBounds];
+    [self rotateSprite:_zombie toFace:_velocity];
     
 }
 
@@ -70,13 +71,6 @@
     CGFloat length = sqrtf(offset.x * offset.x + offset.y * offset.y);
     CGPoint direction = CGPointMake(offset.x / length, offset.y / length);
     _velocity = CGPointMake(direction.x * 120, direction.y * 120);
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self.scene];
-    [self moveZombieTo:location];
 }
 
 - (void)checkBounds
@@ -108,6 +102,25 @@
     
     _zombie.position = zombiePosition;
     _velocity = zombieVelocity;
+}
+
+- (void)rotateSprite:(SKSpriteNode *)sprite toFace:(CGPoint)direction
+{
+    sprite.zRotation = atan2f(direction.y, direction.x);
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self.scene];
+    [self moveZombieTo:location];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self.scene];
+    [self moveZombieTo:location];
 }
 
 
