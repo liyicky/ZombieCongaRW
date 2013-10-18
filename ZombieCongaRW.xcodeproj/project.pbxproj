@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BB6EB3D18109B4300104585 /* math.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6EB3C18109B4300104585 /* math.m */; };
 		7BE2530A1804CEC700F8009D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE253091804CEC700F8009D /* Foundation.framework */; };
 		7BE2530C1804CEC700F8009D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE2530B1804CEC700F8009D /* CoreGraphics.framework */; };
 		7BE2530E1804CEC700F8009D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE2530D1804CEC700F8009D /* UIKit.framework */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7BB6EB3C18109B4300104585 /* math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = math.m; sourceTree = "<group>"; };
 		7BE253061804CEC700F8009D /* ZombieCongaRW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZombieCongaRW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE253091804CEC700F8009D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7BE2530B1804CEC700F8009D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -178,6 +180,7 @@
 				7BE253211804CEC700F8009D /* LIYViewController.m */,
 				7BE253231804CEC700F8009D /* LIYMyScene.h */,
 				7BE253241804CEC700F8009D /* LIYMyScene.m */,
+				7BB6EB3C18109B4300104585 /* math.m */,
 				7BE253261804CEC700F8009D /* Spaceship.png */,
 				7BE253281804CEC700F8009D /* Images.xcassets */,
 				7BE253451804E9DD00F8009D /* Art */,
@@ -395,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB6EB3D18109B4300104585 /* math.m in Sources */,
 				7BE253221804CEC700F8009D /* LIYViewController.m in Sources */,
 				7BE253251804CEC700F8009D /* LIYMyScene.m in Sources */,
 				7BE253181804CEC700F8009D /* main.m in Sources */,
@@ -609,6 +613,7 @@
 				7BE253411804CEC800F8009D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7BE253421804CEC800F8009D /* Build configuration list for PBXNativeTarget "ZombieCongaRWTests" */ = {
 			isa = XCConfigurationList;
@@ -617,6 +622,7 @@
 				7BE253441804CEC800F8009D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

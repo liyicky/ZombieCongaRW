@@ -7,6 +7,7 @@
 //
 
 #import "LIYMyScene.h"
+#import "math.m"
 
 @implementation LIYMyScene
 {
@@ -60,17 +61,16 @@
 
 - (void)moveSprite:(SKSpriteNode *)sprite velocity:(CGPoint)velocity
 {
-    CGPoint ammountToMove = CGPointMake(velocity.x * _dt, velocity.y * _dt);
+    CGPoint ammountToMove = CGPointMultiplyScalar(velocity, _dt);
     NSLog(@"Ammount to move: %@", NSStringFromCGPoint(ammountToMove));
-    sprite.position = CGPointMake(sprite.position.x + ammountToMove.x, sprite.position.y + ammountToMove.y);
+    sprite.position = CGPointAdd(sprite.position, ammountToMove);
 }
 
 - (void)moveZombieTo:(CGPoint)touch
 {
-    CGPoint offset = CGPointMake(touch.x - _zombie.position.x, touch.y - _zombie.position.y);
-    CGFloat length = sqrtf(offset.x * offset.x + offset.y * offset.y);
-    CGPoint direction = CGPointMake(offset.x / length, offset.y / length);
-    _velocity = CGPointMake(direction.x * 120, direction.y * 120);
+    CGPoint offset = CGPointSubtract(touch, _zombie.position);
+    CGPoint direction = CGPointNormalize(offset);
+    _velocity = CGPointMultiplyScalar(direction, 120.0);
 }
 
 - (void)checkBounds
@@ -106,7 +106,7 @@
 
 - (void)rotateSprite:(SKSpriteNode *)sprite toFace:(CGPoint)direction
 {
-    sprite.zRotation = atan2f(direction.y, direction.x);
+    sprite.zRotation = CGPointToAngle(direction);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
