@@ -14,8 +14,9 @@
     SKSpriteNode *_zombie;
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
-    
+    CGFloat _speed;
     CGPoint _velocity;
+    CGPoint _lastTouchPosition;
 }
 
 - (id)initWithSize:(CGSize)size
@@ -24,7 +25,7 @@
         self.backgroundColor = [SKColor whiteColor];
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
         [self addChild:background];
-        
+        _speed = 120.0;
         background.anchorPoint = CGPointZero;
         background.position    = CGPointZero;
         
@@ -46,9 +47,13 @@
     
     _lastUpdateTime = currentTime;
     
-    [self checkBounds];
-    [self rotateSprite:_zombie toFace:_velocity];
-    
+    if (CGPointLenght(CGPointSubtract(_zombie.position, _lastTouchPosition)) <= _speed * _dt) {
+        _zombie.position = _lastTouchPosition;
+        _velocity = CGPointZero;
+    } else {
+        [self checkBounds];
+        [self rotateSprite:_zombie toFace:_velocity];
+    }
 }
 
 - (void)addZombie
@@ -113,6 +118,7 @@
 {
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self.scene];
+    _lastTouchPosition = location;
     [self moveZombieTo:location];
 }
 
@@ -120,6 +126,7 @@
 {
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self.scene];
+    _lastTouchPosition = location;
     [self moveZombieTo:location];
 }
 
