@@ -9,12 +9,16 @@
 #import "LIYMyScene.h"
 #import "math.m"
 
+static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
+
 @implementation LIYMyScene
 {
     SKSpriteNode *_zombie;
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
+    
     CGFloat _speed;
+    
     CGPoint _velocity;
     CGPoint _lastTouchPosition;
 }
@@ -25,6 +29,7 @@
         self.backgroundColor = [SKColor whiteColor];
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
         [self addChild:background];
+        
         _speed = 120.0;
         background.anchorPoint = CGPointZero;
         background.position    = CGPointZero;
@@ -52,8 +57,11 @@
         _velocity = CGPointZero;
     } else {
         [self checkBounds];
-        [self rotateSprite:_zombie toFace:_velocity];
+        
+        [self rotateSprite:_zombie toFace:_velocity rotateRadiansPerSec:ZOMBIE_RADIANS_PER_SEC];
     }
+    
+    
 }
 
 - (void)addZombie
@@ -67,7 +75,6 @@
 - (void)moveSprite:(SKSpriteNode *)sprite velocity:(CGPoint)velocity
 {
     CGPoint ammountToMove = CGPointMultiplyScalar(velocity, _dt);
-    NSLog(@"Ammount to move: %@", NSStringFromCGPoint(ammountToMove));
     sprite.position = CGPointAdd(sprite.position, ammountToMove);
 }
 
@@ -75,7 +82,7 @@
 {
     CGPoint offset = CGPointSubtract(touch, _zombie.position);
     CGPoint direction = CGPointNormalize(offset);
-    _velocity = CGPointMultiplyScalar(direction, 120.0);
+    _velocity = CGPointMultiplyScalar(direction, _speed);
 }
 
 - (void)checkBounds
@@ -109,9 +116,20 @@
     _velocity = zombieVelocity;
 }
 
-- (void)rotateSprite:(SKSpriteNode *)sprite toFace:(CGPoint)direction
+- (void)rotateSprite:(SKSpriteNode *)sprite toFace:(CGPoint)velocity rotateRadiansPerSec:(CGFloat)rotateRadiansPerSec
 {
-    sprite.zRotation = CGPointToAngle(direction);
+    
+    CGFloat curRotation = sprite.zRotation;
+    CGFloat timeDelta   = _dt;
+    CGFloat shortest = ScalarShortestAngleBetween(curRotation, CGPointToAngle(velocity));
+    CGFloat amtToRotate = timeDelta * rotateRadiansPerSec;
+    
+    if (fabsf(shortest) < amtToRotate)
+        amtToRotate = fabsf(shortest);
+    
+    amtToRotate = curRotation + (amtToRotate * ScalarSign(shortest));
+    sprite.zRotation = amtToRotate;
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -129,6 +147,7 @@
     _lastTouchPosition = location;
     [self moveZombieTo:location];
 }
+
 
 
 @end

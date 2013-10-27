@@ -31,3 +31,18 @@ static inline CGFloat CGPointToAngle(const CGPoint a)
     return atan2f(a.y, a.x);
 }
 
+static inline CGFloat ScalarSign(CGFloat a)
+{
+    return a >= 0 ? 1 : -1;
+}
+
+static inline CGFloat ScalarShortestAngleBetween(const CGFloat a, const CGFloat b)
+{
+    CGFloat difference = b - a;
+    CGFloat angle = fmodf(difference, M_PI * 2);
+    if (angle >= M_PI) {
+        angle -= M_PI * 2;
+    }
+    
+    return angle;
+}
