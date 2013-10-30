@@ -41,6 +41,10 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
                                                     [SKAction waitForDuration:2.0]]];
         [self runAction:[SKAction repeatActionForever:spawnEnemy]];
         
+        SKAction *spawnCat = [SKAction sequence:@[[SKAction performSelector:@selector(addCat) onTarget:self],
+                                                  [SKAction waitForDuration:1.0]]];
+        [self runAction:[SKAction repeatActionForever:spawnCat]];
+        
         
         NSMutableArray *textures = [NSMutableArray arrayWithCapacity:10];
         for (int i = 4; i > 1; i--) {
@@ -98,6 +102,26 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
     }];
     SKAction *seq = [SKAction sequence:@[move, remove]];
     [enemy runAction:seq];
+    
+}
+
+- (void)addCat
+{
+    SKSpriteNode *cat = [SKSpriteNode spriteNodeWithImageNamed:@"cat"];
+    cat.position = CGPointMake(ScalarRandomRange(0, self.size.width), ScalarRandomRange(0, self.size.height));
+    cat.xScale = 0;
+    cat.yScale = 0;
+    [self addChild:cat];
+    
+    SKAction *appear   = [SKAction scaleTo:1 duration:0.5];
+    SKAction *disapear = [SKAction scaleTo:0 duration:0.5];
+    SKAction *remove   = [SKAction removeFromParent];
+    cat.zRotation = _zombie.zRotation;
+    SKAction *wibble = [SKAction rotateByAngle:(M_PI / 8) duration:0.5];
+    SKAction *wobble = [wibble reversedAction];
+    SKAction *rock   = [SKAction sequence:@[wibble, wobble]];
+    SKAction *wait   = [SKAction repeatAction:rock count:10];
+    [cat runAction:[SKAction sequence:@[appear, wait, disapear, remove]]];
     
 }
 
