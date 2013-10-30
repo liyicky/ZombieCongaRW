@@ -46,3 +46,14 @@ static inline CGFloat ScalarShortestAngleBetween(const CGFloat a, const CGFloat 
     
     return angle;
 }
+
+#define ARC4RANDOM_MAX 0x100000000
+static inline CGFloat ScalarRandomRange(CGFloat min, CGFloat max)
+{
+    return floorf(((double)arc4random() / ARC4RANDOM_MAX) * ((max - min) + min));
+}
+
+
+
+
+
