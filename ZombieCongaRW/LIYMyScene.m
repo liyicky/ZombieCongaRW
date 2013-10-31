@@ -116,12 +116,18 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
     SKAction *appear   = [SKAction scaleTo:1 duration:0.5];
     SKAction *disapear = [SKAction scaleTo:0 duration:0.5];
     SKAction *remove   = [SKAction removeFromParent];
-    cat.zRotation = _zombie.zRotation;
-    SKAction *wibble = [SKAction rotateByAngle:(M_PI / 8) duration:0.5];
+    SKAction *wibble = [SKAction rotateByAngle:(M_PI / 16) duration:0.5];
     SKAction *wobble = [wibble reversedAction];
     SKAction *rock   = [SKAction sequence:@[wibble, wobble]];
-    SKAction *wait   = [SKAction repeatAction:rock count:10];
+    SKAction *scaleUp = [SKAction scaleBy:1.2 duration:0.25];
+    SKAction *scaleDown = [scaleUp reversedAction];
+    SKAction *fullScale = [SKAction sequence:@[scaleUp, scaleDown, scaleUp, scaleDown]];
+    SKAction *group = [SKAction group:@[rock, fullScale]];
+    SKAction *wait  = [SKAction repeatAction:group count:10];
+    
     [cat runAction:[SKAction sequence:@[appear, wait, disapear, remove]]];
+    
+    [self rotateSprite:cat toFace:_zombie.position rotateRadiansPerSec:ZOMBIE_RADIANS_PER_SEC];
     
 }
 
