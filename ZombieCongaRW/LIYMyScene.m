@@ -79,10 +79,12 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
         [self rotateSprite:_zombie toFace:_velocity rotateRadiansPerSec:ZOMBIE_RADIANS_PER_SEC];
     }
     
+    [self checkCollisions];
 }
 
 - (void)addZombie
 {
+    _zombie.name = @"zombie";
     _zombie = [SKSpriteNode spriteNodeWithImageNamed:@"zombie1"];
     _zombie.position = CGPointMake(100, 100);
     [self addChild:_zombie];
@@ -92,6 +94,7 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
 - (void)addEnemy
 {
     SKSpriteNode *enemy = [SKSpriteNode spriteNodeWithImageNamed:@"enemy"];
+    enemy.name = @"enemy";
     enemy.position = CGPointMake(self.size.width + enemy.size.width/2, ScalarRandomRange(enemy.size.height/2, self.size.height-enemy.size.height/2));
     [self addChild:enemy];
     
@@ -111,6 +114,7 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
     cat.position = CGPointMake(ScalarRandomRange(0, self.size.width), ScalarRandomRange(0, self.size.height));
     cat.xScale = 0;
     cat.yScale = 0;
+    cat.name = @"cat";
     [self addChild:cat];
     
     SKAction *appear   = [SKAction scaleTo:1 duration:0.5];
@@ -126,8 +130,6 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
     SKAction *wait  = [SKAction repeatAction:group count:10];
     
     [cat runAction:[SKAction sequence:@[appear, wait, disapear, remove]]];
-    
-    [self rotateSprite:cat toFace:_zombie.position rotateRadiansPerSec:ZOMBIE_RADIANS_PER_SEC];
     
 }
 
@@ -186,6 +188,25 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
     
     _zombie.position = zombiePosition;
     _velocity = zombieVelocity;
+}
+
+-(void)checkCollisions
+{
+    [self enumerateChildNodesWithName:@"cat" usingBlock:^(SKNode *node, BOOL *stop) {
+        SKSpriteNode *cat = (SKSpriteNode *)node;
+        if (CGRectIntersectsRect(cat.frame, _zombie.frame)) {
+            [cat removeFromParent];
+        }
+    }];
+    
+    [self enumerateChildNodesWithName:@"enemy" usingBlock:^(SKNode *node, BOOL *stop) {
+        SKSpriteNode *enemy = (SKSpriteNode *)node;
+        CGRect enemyFrame = CGRectInset(enemy.frame, 20, 20);
+        if (CGRectIntersectsRect(enemyFrame, _zombie.frame)) {
+            [enemy removeFromParent];
+        }
+    }];
+
 }
 
 - (void)rotateSprite:(SKSpriteNode *)sprite toFace:(CGPoint)velocity rotateRadiansPerSec:(CGFloat)rotateRadiansPerSec
