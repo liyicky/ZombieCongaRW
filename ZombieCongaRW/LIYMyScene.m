@@ -26,6 +26,9 @@ static const float CAT_SPEED = 120.0;
     
     SKAction *_catCollisionSound;
     SKAction *_enemyCollisionSound;
+    
+    int _lives;
+    BOOL _gameOver;
     BOOL _invincible;
 }
 
@@ -40,7 +43,10 @@ static const float CAT_SPEED = 120.0;
         
         [self addZombie];
         _zombie.zPosition = 100;
+        _lives      = 5;
+        _gameOver   = NO;
         _invincible = NO;
+        
         SKAction *spawnEnemy = [SKAction sequence:@[[SKAction performSelector:@selector(addEnemy) onTarget:self],
                                                 [SKAction waitForDuration:2.0]]];
         [self runAction:[SKAction repeatActionForever:spawnEnemy]];
@@ -85,6 +91,11 @@ static const float CAT_SPEED = 120.0;
     }
     
     [self moveConga];
+    
+    if (_lives <= 0 && !_gameOver) {
+        _gameOver = YES;
+        NSLog(@"Game ova nigga");
+    }
     
 }
 
@@ -222,6 +233,8 @@ static const float CAT_SPEED = 120.0;
             CGRect enemyFrame = CGRectInset(enemy.frame, 20, 20);
             if (CGRectIntersectsRect(enemyFrame, _zombie.frame)) {
                 [self runAction:_enemyCollisionSound];
+                [self loseCats];
+                _lives--;
                 _invincible = YES;
                 float blinkTimes = 10;
                 float blinkDuration = 3.0;
@@ -243,9 +256,11 @@ static const float CAT_SPEED = 120.0;
 
 - (void)moveConga
 {
+    __block int trainCount = 0;
     __block CGPoint targetPosition = _zombie.position;
     __block CGFloat targetRotation = _zombie.zRotation;
     [self enumerateChildNodesWithName:@"train" usingBlock:^(SKNode *node, BOOL *stop) {
+        trainCount++;
         if (!node.hasActions) {
             float actionDuration = 0.3;
             CGPoint offset = CGPointSubtract(targetPosition, node.position);
@@ -262,6 +277,33 @@ static const float CAT_SPEED = 120.0;
         targetRotation = node.zRotation;
 
     }];
+    
+    if (trainCount >= 30 && !_gameOver) {
+        _gameOver = YES;
+        NSLog(@"Nigga you win!");
+    }
+}
+
+- (void)loseCats
+{
+    __block int lostCount = 0;
+    [self enumerateChildNodesWithName:@"train" usingBlock:^(SKNode *node, BOOL *stop) {
+        CGPoint randomeSpot = node.position;
+        randomeSpot.x += ScalarRandomRange(-100, 100);
+        randomeSpot.y += ScalarRandomRange(-100, 100);
+        
+        node.name = @"";
+        [node runAction:[SKAction sequence:@[[SKAction group:@[[SKAction rotateByAngle:M_PI * 4 duration:1.0],
+                                                               [SKAction moveTo:randomeSpot duration:1.0],
+                                                               [SKAction scaleTo:0 duration:1.0]]],
+                                             [SKAction removeFromParent]
+                                             ]]];
+        lostCount++;
+        if (lostCount >= 2) {
+            *stop = YES;
+        }
+    }];
+    
 }
 
 - (void)rotateSprite:(SKSpriteNode *)sprite toFace:(CGPoint)velocity rotateRadiansPerSec:(CGFloat)rotateRadiansPerSec
