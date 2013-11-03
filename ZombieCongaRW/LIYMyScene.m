@@ -11,6 +11,7 @@
 
 static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
 static const float ZOMBIE_SPEED = 120.0;
+static const float CAT_RADIANS_PER_SEC = 4 * M_PI;
 static const float CAT_SPEED = 120.0;
 
 @implementation LIYMyScene
@@ -82,6 +83,8 @@ static const float CAT_SPEED = 120.0;
         [self checkBounds];
         [self rotateSprite:_zombie toFace:_velocity rotateRadiansPerSec:ZOMBIE_RADIANS_PER_SEC];
     }
+    
+    [self moveConga];
     
 }
 
@@ -203,8 +206,13 @@ static const float CAT_SPEED = 120.0;
     [self enumerateChildNodesWithName:@"cat" usingBlock:^(SKNode *node, BOOL *stop) {
         SKSpriteNode *cat = (SKSpriteNode *)node;
         if (CGRectIntersectsRect(cat.frame, _zombie.frame)) {
-            [cat removeFromParent];
             [self runAction:_catCollisionSound];
+            cat.name = @"train";
+            [cat removeAllActions];
+            cat.xScale    = 1;
+            cat.yScale    = 1;
+            cat.zRotation = 0;
+            [cat runAction:[SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:0.6 duration:0.2]];
         }
     }];
     
@@ -231,6 +239,29 @@ static const float CAT_SPEED = 120.0;
         }];
 
     }
+}
+
+- (void)moveConga
+{
+    __block CGPoint targetPosition = _zombie.position;
+    __block CGFloat targetRotation = _zombie.zRotation;
+    [self enumerateChildNodesWithName:@"train" usingBlock:^(SKNode *node, BOOL *stop) {
+        if (!node.hasActions) {
+            float actionDuration = 0.3;
+            CGPoint offset = CGPointSubtract(targetPosition, node.position);
+            CGPoint direction = CGPointNormalize(offset);
+            CGPoint amountToMovePerSec = CGPointMultiplyScalar(direction, CAT_SPEED);
+            CGPoint amountToMove = CGPointMultiplyScalar(amountToMovePerSec, actionDuration);
+            SKAction *moveConga = [SKAction moveByX:amountToMove.x y:amountToMove.y duration:actionDuration];
+            [node runAction:moveConga];
+            node.zRotation = targetRotation;
+            
+        }
+        
+        targetPosition = node.position;
+        targetRotation = node.zRotation;
+
+    }];
 }
 
 - (void)rotateSprite:(SKSpriteNode *)sprite toFace:(CGPoint)velocity rotateRadiansPerSec:(CGFloat)rotateRadiansPerSec
