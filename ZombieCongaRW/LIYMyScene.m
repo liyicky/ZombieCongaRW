@@ -22,6 +22,10 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
     
     CGPoint _velocity;
     CGPoint _lastTouchPosition;
+    
+    SKAction *_catCollisionSound;
+    SKAction *_enemyCollisionSound;
+    BOOL _invincible;
 }
 
 - (id)initWithSize:(CGSize)size
@@ -30,21 +34,18 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
         self.backgroundColor = [SKColor whiteColor];
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
         [self addChild:background];
-        
         _speed = 120.0;
         background.anchorPoint = CGPointZero;
         background.position    = CGPointZero;
         
         [self addZombie];
-        
+        _invincible = NO;
         SKAction *spawnEnemy = [SKAction sequence:@[[SKAction performSelector:@selector(addEnemy) onTarget:self],
-                                                    [SKAction waitForDuration:2.0]]];
+                                                [SKAction waitForDuration:2.0]]];
         [self runAction:[SKAction repeatActionForever:spawnEnemy]];
-        
         SKAction *spawnCat = [SKAction sequence:@[[SKAction performSelector:@selector(addCat) onTarget:self],
                                                   [SKAction waitForDuration:1.0]]];
         [self runAction:[SKAction repeatActionForever:spawnCat]];
-        
         
         NSMutableArray *textures = [NSMutableArray arrayWithCapacity:10];
         for (int i = 4; i > 1; i--) {
@@ -53,6 +54,9 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
             [textures addObject:texture];
         }
         _zombieAnimation = [SKAction animateWithTextures:textures timePerFrame:0.1];
+        
+        _catCollisionSound = [SKAction playSoundFileNamed:@"hitCat.wav" waitForCompletion:NO];
+        _enemyCollisionSound = [SKAction playSoundFileNamed:@"hitCatLady.wav" waitForCompletion:NO];
     }
     
     return self;
@@ -79,6 +83,10 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
         [self rotateSprite:_zombie toFace:_velocity rotateRadiansPerSec:ZOMBIE_RADIANS_PER_SEC];
     }
     
+}
+
+- (void)didEvaluateActions
+{
     [self checkCollisions];
 }
 
@@ -196,17 +204,33 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
         SKSpriteNode *cat = (SKSpriteNode *)node;
         if (CGRectIntersectsRect(cat.frame, _zombie.frame)) {
             [cat removeFromParent];
+            [self runAction:_catCollisionSound];
         }
     }];
     
-    [self enumerateChildNodesWithName:@"enemy" usingBlock:^(SKNode *node, BOOL *stop) {
-        SKSpriteNode *enemy = (SKSpriteNode *)node;
-        CGRect enemyFrame = CGRectInset(enemy.frame, 20, 20);
-        if (CGRectIntersectsRect(enemyFrame, _zombie.frame)) {
-            [enemy removeFromParent];
-        }
-    }];
+    if (_invincible == NO) {
+        [self enumerateChildNodesWithName:@"enemy" usingBlock:^(SKNode *node, BOOL *stop) {
+            SKSpriteNode *enemy = (SKSpriteNode *)node;
+            CGRect enemyFrame = CGRectInset(enemy.frame, 20, 20);
+            if (CGRectIntersectsRect(enemyFrame, _zombie.frame)) {
+                [self runAction:_enemyCollisionSound];
+                _invincible = YES;
+                float blinkTimes = 10;
+                float blinkDuration = 3.0;
+                SKAction *damaged = [SKAction customActionWithDuration:blinkDuration actionBlock:^(SKNode *node, CGFloat elapsedTime) {
+                    float slice = blinkDuration / blinkTimes;
+                    float remainder = fmodf(elapsedTime, slice);
+                    node.hidden = remainder > slice / 2;
+                }];
+                [_zombie runAction:damaged];
+                [_zombie runAction:[SKAction sequence:@[[SKAction waitForDuration:blinkDuration],[SKAction runBlock:^{
+                    _invincible = NO;
+                    _zombie.hidden = NO;
+                }]]]];
+            }
+        }];
 
+    }
 }
 
 - (void)rotateSprite:(SKSpriteNode *)sprite toFace:(CGPoint)velocity rotateRadiansPerSec:(CGFloat)rotateRadiansPerSec
