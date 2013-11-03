@@ -10,6 +10,8 @@
 #import "math.m"
 
 static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
+static const float ZOMBIE_SPEED = 120.0;
+static const float CAT_SPEED = 120.0;
 
 @implementation LIYMyScene
 {
@@ -17,8 +19,6 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
     SKAction *_zombieAnimation;
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
-    
-    CGFloat _speed;
     
     CGPoint _velocity;
     CGPoint _lastTouchPosition;
@@ -34,11 +34,11 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
         self.backgroundColor = [SKColor whiteColor];
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
         [self addChild:background];
-        _speed = 120.0;
         background.anchorPoint = CGPointZero;
         background.position    = CGPointZero;
         
         [self addZombie];
+        _zombie.zPosition = 100;
         _invincible = NO;
         SKAction *spawnEnemy = [SKAction sequence:@[[SKAction performSelector:@selector(addEnemy) onTarget:self],
                                                 [SKAction waitForDuration:2.0]]];
@@ -74,7 +74,7 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
     
     _lastUpdateTime = currentTime;
     
-    if (CGPointLenght(CGPointSubtract(_zombie.position, _lastTouchPosition)) <= _speed * _dt) {
+    if (CGPointLenght(CGPointSubtract(_zombie.position, _lastTouchPosition)) <= ZOMBIE_SPEED * _dt) {
         _zombie.position = _lastTouchPosition;
         _velocity = CGPointZero;
         [self stopZombieAnimation];
@@ -164,7 +164,7 @@ static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
     [self animateZombie];
     CGPoint offset = CGPointSubtract(touch, _zombie.position);
     CGPoint direction = CGPointNormalize(offset);
-    _velocity = CGPointMultiplyScalar(direction, _speed);
+    _velocity = CGPointMultiplyScalar(direction, ZOMBIE_SPEED);
 }
 
 - (void)checkBounds
