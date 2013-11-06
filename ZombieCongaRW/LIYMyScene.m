@@ -22,7 +22,7 @@ static const float CAT_SPEED = 120.0;
     SKAction *_zombieAnimation;
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
-    
+    AVAudioPlayer *_backgroundMusicPlayer;
     CGPoint _velocity;
     CGPoint _lastTouchPosition;
     
@@ -42,7 +42,7 @@ static const float CAT_SPEED = 120.0;
         [self addChild:background];
         background.anchorPoint = CGPointZero;
         background.position    = CGPointZero;
-        
+        [self playBackgroundMusic:@"bgMusic.mp3"];
         [self addZombie];
         _zombie.zPosition = 100;
         _lives      = 5;
@@ -96,6 +96,7 @@ static const float CAT_SPEED = 120.0;
     
     if (_lives <= 0 && !_gameOver) {
         _gameOver = YES;
+        [_backgroundMusicPlayer stop];
         SKScene *gameOverScene = [[LIYGameOverScene alloc] initWithSize:self.size won:NO];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         [self.view presentScene:gameOverScene transition:reveal];
@@ -285,7 +286,7 @@ static const float CAT_SPEED = 120.0;
     
     if (trainCount >= 30 && !_gameOver) {
         _gameOver = YES;
-        NSLog(@"Nigga you win!");
+        [_backgroundMusicPlayer stop];
         SKScene *gameOverScene = [[LIYGameOverScene alloc] initWithSize:self.size won:YES];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         [self.view presentScene:gameOverScene transition:reveal];
@@ -328,6 +329,16 @@ static const float CAT_SPEED = 120.0;
     amtToRotate = curRotation + (amtToRotate * ScalarSign(shortest));
     sprite.zRotation = amtToRotate;
     
+}
+
+- (void)playBackgroundMusic:(NSString *)filename
+{
+    NSError *error;
+    NSURL *backgroundMusicURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
+    _backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+    _backgroundMusicPlayer.numberOfLoops = -1;
+    [_backgroundMusicPlayer prepareToPlay];
+    [_backgroundMusicPlayer play];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
