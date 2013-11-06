@@ -7,7 +7,7 @@
 //
 
 #import "LIYViewController.h"
-#import "LIYMyScene.h"
+#import "LIYMainMenuScene.h"
 
 @implementation LIYViewController
 
@@ -22,7 +22,7 @@
         skView.showsNodeCount = YES;
     
         // Create and configure the scene.
-        SKScene * scene = [LIYMyScene sceneWithSize:skView.bounds.size];
+        SKScene * scene = [LIYMainMenuScene sceneWithSize:skView.bounds.size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
     
         // Present the scene.
