@@ -10,6 +10,4 @@
 
 @interface LIYMyScene : SKScene
 
-- (void)addZombie;
-
 @end

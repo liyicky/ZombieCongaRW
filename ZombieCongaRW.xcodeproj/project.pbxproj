@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B21DDBC1829AC6800B3A40E /* LIYGameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B21DDBB1829AC6800B3A40E /* LIYGameOverScene.m */; };
 		7B8C50B8181FE422008DC600 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C509D181FE422008DC600 /* background.png */; };
 		7B8C50B9181FE422008DC600 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C509E181FE422008DC600 /* background@2x.png */; };
 		7B8C50BA181FE422008DC600 /* MainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8C509F181FE422008DC600 /* MainMenu.png */; };
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B21DDBA1829AC6800B3A40E /* LIYGameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIYGameOverScene.h; sourceTree = "<group>"; };
+		7B21DDBB1829AC6800B3A40E /* LIYGameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIYGameOverScene.m; sourceTree = "<group>"; };
 		7B8C509D181FE422008DC600 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		7B8C509E181FE422008DC600 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		7B8C509F181FE422008DC600 /* MainMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenu.png; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 				7BE253211804CEC700F8009D /* LIYViewController.m */,
 				7BE253231804CEC700F8009D /* LIYMyScene.h */,
 				7BE253241804CEC700F8009D /* LIYMyScene.m */,
+				7B21DDBA1829AC6800B3A40E /* LIYGameOverScene.h */,
+				7B21DDBB1829AC6800B3A40E /* LIYGameOverScene.m */,
 				7BB6EB3C18109B4300104585 /* math.m */,
 				7BE253261804CEC700F8009D /* Spaceship.png */,
 				7BE253281804CEC700F8009D /* Images.xcassets */,
@@ -402,6 +407,7 @@
 				7BB6EB3D18109B4300104585 /* math.m in Sources */,
 				7BE253221804CEC700F8009D /* LIYViewController.m in Sources */,
 				7BE253251804CEC700F8009D /* LIYMyScene.m in Sources */,
+				7B21DDBC1829AC6800B3A40E /* LIYGameOverScene.m in Sources */,
 				7BE253181804CEC700F8009D /* main.m in Sources */,
 				7BE2531C1804CEC700F8009D /* LIYAppDelegate.m in Sources */,
 			);

@@ -7,7 +7,9 @@
 //
 
 #import "LIYMyScene.h"
+#import "LIYGameOverScene.h"
 #import "math.m"
+@import AVFoundation;
 
 static const float ZOMBIE_RADIANS_PER_SEC = 4 * M_PI;
 static const float ZOMBIE_SPEED = 120.0;
@@ -94,7 +96,10 @@ static const float CAT_SPEED = 120.0;
     
     if (_lives <= 0 && !_gameOver) {
         _gameOver = YES;
-        NSLog(@"Game ova nigga");
+        SKScene *gameOverScene = [[LIYGameOverScene alloc] initWithSize:self.size won:NO];
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        [self.view presentScene:gameOverScene transition:reveal];
+
     }
     
 }
@@ -281,6 +286,9 @@ static const float CAT_SPEED = 120.0;
     if (trainCount >= 30 && !_gameOver) {
         _gameOver = YES;
         NSLog(@"Nigga you win!");
+        SKScene *gameOverScene = [[LIYGameOverScene alloc] initWithSize:self.size won:YES];
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        [self.view presentScene:gameOverScene transition:reveal];
     }
 }
 
